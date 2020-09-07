@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "ModularApp.FlightModule": {
+      "commandName": "Project"
+    }
+  }
+}

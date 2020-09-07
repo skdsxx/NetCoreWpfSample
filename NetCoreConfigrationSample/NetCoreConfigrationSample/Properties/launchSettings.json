@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "NetCoreConfigrationSample": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "Env__IsDevelopment": "true",
+        "Env__IsProduction": "false",
+        "Class__Team__Group": "English"
+      }
+    }
+  }
+}

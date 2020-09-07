@@ -1,0 +1,31 @@
+﻿<m:ModuleCatalog xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:m="clr-namespace:Prism.Modularity;assembly=Prism.Wpf">
+    <!--需要引用项目-->
+    <!--<m:ModuleInfo ModuleName="FlightModule"
+                  Ref="file://ModularApp.FlightModule.dll"
+                  ModuleType="ModularApp.FlightModule.FlightModule, ModularApp.FlightModule, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+                  InitializationMode="OnDemand"/>
+    <m:ModuleInfo ModuleName="PassengerModule" 
+                  Ref="file://ModularApp.PassengerModule.dll"
+                  ModuleType="ModularApp.PassengerModule.PassengerModule, ModularApp.PassengerModule, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" 
+                  InitializationMode="WhenAvailable"/>-->
+    <!--需要引用项目-->
+    <!--<m:ModuleInfo ModuleName="FlightModule"
+                  Ref="ModularApp.FlightModule.dll"
+                  ModuleType="ModularApp.FlightModule.FlightModule, ModularApp.FlightModule, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+                  InitializationMode="OnDemand"/>
+    <m:ModuleInfo ModuleName="PassengerModule" 
+                  Ref="ModularApp.PassengerModule.dll"
+                  ModuleType="ModularApp.PassengerModule.PassengerModule, ModularApp.PassengerModule, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" 
+                  InitializationMode="WhenAvailable"/>-->
+    <!--不需要引用项目即可-->
+    <m:ModuleInfo ModuleName="FlightModule"
+                  Ref="file://E:/CodeExercises/NetCore下WPF的开发/ModularApplication1-4-Module/ModularApp.FlightModule/bin/Debug/netcoreapp3.1/ModularApp.FlightModule.dll"
+                  ModuleType="ModularApp.FlightModule.FlightModule, ModularApp.FlightModule, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+                  InitializationMode="OnDemand"/>
+    <m:ModuleInfo ModuleName="PassengerModule" 
+                  Ref="file://E://CodeExercises/NetCore下WPF的开发/ModularApplication1-4-Module/ModularApp.AirportModule/bin/Debug/netcoreapp3.1/ModularApp.PassengerModule.dll"
+                  ModuleType="ModularApp.PassengerModule.PassengerModule, ModularApp.PassengerModule, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" 
+                  InitializationMode="WhenAvailable"/>
+</m:ModuleCatalog>

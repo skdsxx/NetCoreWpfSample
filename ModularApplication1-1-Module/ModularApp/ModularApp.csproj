@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MahApps.Metro" Version="2.2.0" />
+    <PackageReference Include="Prism.Unity" Version="7.2.0.1422" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ModularApp.AirportModule\ModularApp.PassengerModule.csproj" />
+    <ProjectReference Include="..\ModularApp.FlightModule\ModularApp.FlightModule.csproj" />
+    <ProjectReference Include="..\ModularApp.Infrastructure\ModularApp.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
