@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
+using Microsoft.Extensions.Configuration;
 
 namespace NetCoreConfigrationSample
 {
@@ -28,6 +16,10 @@ namespace NetCoreConfigrationSample
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
             LoadEnv();
+            LoadJson();
+            LoadXml();
+            LoadIni();
+            LoadBind();
         }
         /// <summary>
         /// 环境变量封层读取要注意：
@@ -44,6 +36,87 @@ namespace NetCoreConfigrationSample
             envString += $"IsProduction:{App.MyConfigration["IsProduction"]}";
 
             EnvTxt.Text = envString;
+        }
+        /// <summary>
+        /// 加载Json文件
+        /// </summary>
+        private void LoadJson()
+        {
+            var jsonString = string.Empty;
+            foreach (var item in App.MyConfigration.GetSection("Human").GetChildren())
+            {
+                if (item.Key.Contains("Body"))
+                {
+                    foreach (var body in item.GetChildren())
+                    {
+                        jsonString += $"{body.Key}:{body.Value} \n";
+                    }
+                }
+                else
+                {
+                    jsonString += $"{item.Key}:{item.Value} \n";
+                }
+
+            }
+            JsonTxt.Text = jsonString;
+        }
+
+        /// <summary>
+        /// 加载Xml文件
+        /// </summary>
+        private void LoadXml()
+        {
+            var xmlString = string.Empty;
+            foreach (var item in App.MyConfigration.GetSection("DbServers").GetChildren())
+            {
+                xmlString += $"{item.Key}:{item.Value} \n";
+            }
+            XmlTxt.Text = xmlString;
+        }
+
+        private void LoadIni()
+        {
+            var iniString = string.Empty;
+            foreach (var item in App.MyConfigration.GetSection("Ini").GetChildren())
+            {
+                iniString += $"{item.Key}:{item.Value} \n";
+            }
+            foreach (var item in App.MyConfigration.GetSection("Test").GetChildren())
+            {
+                iniString += $"{item.Key}:{item.Value} \n";
+            }
+            IniTxt.Text = iniString;
+        }
+        /// <summary>
+        /// 强类型绑定
+        /// </summary>
+        private void LoadBind()
+        {
+            var bindString = string.Empty;
+            HumanConfig config = new HumanConfig();//声明变量
+
+            App.MyConfigration.GetSection("Human").Bind(config);//绑定变量
+
+            foreach (var configProperty in config.GetType().GetProperties())
+            {
+                if (configProperty.PropertyType == typeof(Body))
+                {
+                    var body = configProperty.GetValue(config) as Body;
+                    foreach (var bodyProperty in body.GetType().GetProperties())
+                    {
+                        bindString += $"{bodyProperty.Name}:{bodyProperty.GetValue(body)} \n";
+                    }
+                }
+                else
+                {
+                    bindString += $"{configProperty.Name}:{configProperty.GetValue(config)} \n";
+                }
+
+            }
+            TypeTxt.Text = bindString+"\n";
+            TypeTxt.Text = TypeTxt.Text+ config.Name + " >" + config.Age + " >" + config.Sex + " >" + config.Body.Height + ":" +
+                           config.Body.Weight;
+
         }
     }
 }
