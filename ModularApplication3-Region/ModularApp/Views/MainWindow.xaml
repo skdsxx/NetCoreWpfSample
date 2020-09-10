@@ -3,23 +3,24 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ModularApp"
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
-        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-        xmlns:region="clr-namespace:ModularApp.Infrastructure.Constants;assembly=ModularApp.Infrastructure"
         xmlns:prism="http://prismlibrary.com/"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         prism:ViewModelLocator.AutoWireViewModel="True"
         prism:RegionManager.RegionManager="{Binding RegionManager}"
         mc:Ignorable="d"
         Title="MainWindow" Height="1000" Width="1500">
-    <!--<i:Interaction.Triggers>
+    <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding LoadedCmd}"/>
+            <i:InvokeCommandAction Command="{Binding LoadCmd}"/>
         </i:EventTrigger>
-    </i:Interaction.Triggers>-->
+    </i:Interaction.Triggers>
     <mah:MetroWindow.Flyouts>
         <mah:FlyoutsControl x:Name="FlyoutsControlRegion" />
     </mah:MetroWindow.Flyouts>
+    <mah:MetroWindow.RightWindowCommands>
+        <mah:WindowCommands x:Name="RightWindowCommandsRegion" />
+    </mah:MetroWindow.RightWindowCommands>
     <mah:MetroContentControl>
         <Grid>
             <Grid>
@@ -32,20 +33,23 @@
                 <StackPanel Orientation="Horizontal">
                     <Image Source="pack://application:,,,/ModularApp.Infrastructure;Component/Assets/Images/HomePage/home.png" Height="40"/>
                     <Label Content="Home" FontSize="35" FontWeight="Bold"/>
-
+                    <ItemsControl x:Name="Control"></ItemsControl>
                 </StackPanel>
                 <StackPanel Grid.Row="1">
                     <Button  Content="Load FlightModule" FontSize="25"  Margin="5" Command="{Binding LoadFlightModuleCmd}"/>
-                    <!--<UniformGrid Margin="5" prism:RegionManager.RegionName="{x:Static region:RegionNames.UniformContentRegion}" Columns="2">
+                    <UniformGrid Margin="5" Columns="2">
                         <Button Content="ActivePassengerList" Margin="5" Command="{Binding ActivePassengerListCmd}"/>
                         <Button Content="DeactivePassengerList" Margin="5" Command="{Binding DeactivePassengerListCmd}"/>
                         <Button Content="ActiveFlightList" Margin="5" Command="{Binding ActiveFlightListCmd}"/>
                         <Button Content="DeactiveFlightList" Margin="5" Command="{Binding DeactiveFlightListCmd}"/>
-                    </UniformGrid>-->
+                    </UniformGrid>
                 </StackPanel>
 
-                <ContentControl x:Name="PassengerListRegion" Grid.Row="2" prism:RegionManager.RegionName="{x:Static region:RegionNames.PassengerListRegion}" Margin="10"/>
-                <ContentControl x:Name="FlightMainContentRegion" Grid.Row="3" prism:RegionManager.RegionName="{x:Static region:RegionNames.FlightMainContentRegion}"/>
+                <ContentControl Grid.Row="2" x:Name="PassengerContent"
+                                prism:RegionManager.RegionName="PassengerListRegion" 
+                                Margin="10"/>
+                <ContentControl Grid.Row="3" x:Name="FlightContent"
+                                prism:RegionManager.RegionName="FlightMainContentRegion"/>
             </Grid>
         </Grid>
     </mah:MetroContentControl>
