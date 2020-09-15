@@ -6,6 +6,7 @@
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:prism="http://prismlibrary.com/"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:region="clr-namespace:ModularApp.Infrastructure.Constants;assembly=ModularApp.Infrastructure"
         prism:ViewModelLocator.AutoWireViewModel="True"
         prism:RegionManager.RegionManager="{Binding RegionManager}"
         mc:Ignorable="d"
@@ -43,13 +44,15 @@
                         <Button Content="ActiveFlightList" Margin="5" Command="{Binding ActiveFlightListCmd}"/>
                         <Button Content="DeactiveFlightList" Margin="5" Command="{Binding DeactiveFlightListCmd}"/>
                     </UniformGrid>
+                    <UniformGrid Columns="2" prism:RegionManager.RegionName="{x:Static region:RegionNames.UniformGridRegion}">
+                    </UniformGrid>
                 </StackPanel>
 
                 <ContentControl Grid.Row="2" x:Name="PassengerContent"
-                                prism:RegionManager.RegionName="PassengerListRegion" 
+                                prism:RegionManager.RegionName="{x:Static region:RegionNames.PassengerListRegion}" 
                                 Margin="10"/>
                 <ContentControl Grid.Row="3" x:Name="FlightContent"
-                                prism:RegionManager.RegionName="FlightMainContentRegion"/>
+                                prism:RegionManager.RegionName="{x:Static region:RegionNames.FlightMainContentRegion}"/>
             </Grid>
         </Grid>
     </mah:MetroContentControl>

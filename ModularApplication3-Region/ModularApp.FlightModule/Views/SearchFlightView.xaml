@@ -1,0 +1,30 @@
+﻿<mah:Flyout x:Class="ModularApp.FlightModule.Views.SearchFlightView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+             mc:Ignorable="d" d:DesignWidth="450"
+             Header="SearchMedicine" 
+             Position="Right"              
+             FontSize="15">
+    <StackPanel>
+        <Grid Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBox Margin="5" Text="{Binding Condition}"/>
+            <Button Grid.Column="1" FontSize="15" Margin="5" Content="Search" Command="{Binding SearchCommand}"/>
+        </Grid>
+        <DataGrid ItemsSource="{Binding CurrentFlights}" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="航班号" Binding="{Binding FlightNo}"/>
+                <DataGridTextColumn Header="航班日期" Binding="{Binding FlightDate}"/>
+                <DataGridTextColumn Header="航线" Binding="{Binding AirlineNames}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </StackPanel>
+</mah:Flyout>

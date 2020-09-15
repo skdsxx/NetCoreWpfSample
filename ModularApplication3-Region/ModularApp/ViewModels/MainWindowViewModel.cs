@@ -13,7 +13,9 @@
 using System.Linq;
 using System.Windows;
 using ModularApp.FlightModule.Views;
+using ModularApp.Infrastructure.Constants;
 using ModularApp.PassengerModule.Views;
+using ModularApp.Views.RegionView;
 using Prism.Commands;
 using Prism.Modularity;
 using Prism.Mvvm;
@@ -134,12 +136,17 @@ namespace ModularApp.ViewModels
         {
             _passengerRegion = _regionManager.Regions["PassengerListRegion"];
             _passengerListView =
-                (PassengerListView) _passengerRegion.Views.FirstOrDefault(p =>
-                    p.GetType() == typeof(PassengerListView));
+                (PassengerListView)_passengerRegion.Views.FirstOrDefault(p =>
+                   p.GetType() == typeof(PassengerListView));
 
             _flightRegion = _regionManager.Regions["FlightMainContentRegion"];
-            //_flightListView = CommonServiceLocator.ServiceLocator.Current.GetInstance<FlightContentView>();
-            //_flightRegion.Add(_flightListView);
+
+
+            var uniformContentRegion = _regionManager.Regions[RegionNames.UniformGridRegion];
+            var regionAdapterView1 = CommonServiceLocator.ServiceLocator.Current.GetInstance<CustomerRegionAdapterView1>();
+            uniformContentRegion.Add(regionAdapterView1);
+            var regionAdapterView2 = CommonServiceLocator.ServiceLocator.Current.GetInstance<CustomerRegionAdapterView2>();
+            uniformContentRegion.Add(regionAdapterView2);
         }
 
         /// <summary>

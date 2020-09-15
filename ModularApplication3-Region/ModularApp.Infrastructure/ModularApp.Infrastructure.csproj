@@ -14,6 +14,7 @@
   <ItemGroup>
     <Folder Include="Assets\Images\HomePage\" />
     <Folder Include="Assets\Images\FlightModule\" />
+    <Folder Include="CustomerRegionAdapter\" />
   </ItemGroup>
 
 </Project>

@@ -5,12 +5,18 @@
     <Compile Update="Views\FlightContentView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\SearchFlightView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\ShowSearchPassengerView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\FlightContentView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\SearchFlightView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\ShowSearchPassengerView.xaml">

@@ -37,5 +37,7 @@ namespace ModularApp.Infrastructure.Constants
         /// </summary>
         public static string FlyoutRegion= "FlyoutRegion";
 
+        public static string UniformGridRegion = "UniformGridRegion";
+
     }
 }

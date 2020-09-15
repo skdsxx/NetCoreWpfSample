@@ -46,8 +46,9 @@ namespace ModularApp.FlightModule
 
             //rightWindowCommandsRegion
             regionManager.RegisterViewWithRegion(RegionNames.ShowSearchPassengerRegion, typeof(ShowSearchPassengerView));
-        }
 
-        
+            //SearchFlight-Flyout
+            regionManager.RegisterViewWithRegion(RegionNames.FlyoutRegion, typeof(SearchFlightView));
+        }
     }
 }

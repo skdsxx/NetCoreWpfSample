@@ -3,11 +3,14 @@ using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Unity;
 using System.Windows;
+using System.Windows.Controls.Primitives;
 using ModularApp.Infrastructure;
+using ModularApp.Infrastructure.CustomerRegionAdapter;
 using ModularApp.Infrastructure.IServices;
 using ModularApp.Infrastructure.Services;
 using ModularApp.Views;
 using Prism.Mvvm;
+using Prism.Regions;
 
 namespace ModularApp
 {
@@ -50,6 +53,7 @@ namespace ModularApp
             containerRegistry.RegisterSingleton<IApplicationCommands, ApplicationCommands>();
             containerRegistry.RegisterInstance<IFlyoutService>(Container.Resolve<FlyoutService>());
         }
+
         /// <summary>
         /// 程序启动时，需要启动的主窗体   重载应用程序的主窗体应用（Shell）
         /// </summary>
@@ -57,6 +61,17 @@ namespace ModularApp
         protected override Window CreateShell()
         {
             return Container.Resolve<MainWindow>();
+        }
+
+        /// <summary>
+        /// RegionAdapter配置
+        /// </summary>
+        /// <param name="regionAdapterMappings"></param>
+        protected override void ConfigureRegionAdapterMappings(RegionAdapterMappings regionAdapterMappings)
+        {
+            base.ConfigureRegionAdapterMappings(regionAdapterMappings);
+            //为UniformGrid控件注册适配器映射
+            regionAdapterMappings.RegisterMapping(typeof(UniformGrid), Container.Resolve<UniformGridRegionAdapter>());
         }
 
         /// <summary>
